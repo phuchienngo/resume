@@ -1,1 +1,1 @@
-![](<resume.png?raw=true>)
+[![](<resume.png?raw=true>)](https://phuchienngo.github.io/resume/resume.pdf)
