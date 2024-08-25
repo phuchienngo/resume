@@ -33,11 +33,15 @@ jobs:
       - name: Commit generated PDF file
         id: commit
         run: |
-          git config --local user.email "action[bot]@github.com"
-          git config --local user.name "github-actions[bot]"
-          git add README.md
-          git add resume.html
-          git commit -m "[ci] compile resume"
+          if [ -n "$(git status --porcelain README.md index.html)" ]; then
+            git config --local user.email "action[bot]@github.com"
+            git config --local user.name "github-actions[bot]"
+            git add README.md
+            git add resume.html
+            git commit -m "[ci] compile resume"
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Push changes
         uses: ad-m/github-push-action@master
