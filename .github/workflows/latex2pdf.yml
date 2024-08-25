@@ -49,6 +49,9 @@ jobs:
       - name: Convert PDF to PNG
         run: convert -density 900 -background white -alpha off resume.pdf -resize 25% -quality 90 -colorspace RGB resume.png
 
+      - name: Convert PDF to HTML
+        run: docker run --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-alpine-3.12.0-x86_64 --zoom 1.3 resume.pdf
+
       - name: Commit generated PDF file
         id: commit
         run: |
@@ -56,6 +59,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add resume.png
           git add resume.pdf
+          git add resume.html
           git commit -m "[ci] updated pdf file"
 
       - name: Push changes

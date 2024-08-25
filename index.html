@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <title>My Resume</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#includedContent").load("resume.html");
+        });
+    </script>
 </head>
 <body>
-
-<object data="https://phuchienngo.github.io/resume/resume.pdf" type="application/pdf" width="100%" height="100%">
-    <p>Alternative text - include a message indicating that the PDF can't be displayed.</p>
-</object>
-
+    <div id="includedContent"></div>
 </body>
 </html>
