@@ -8,15 +8,14 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@master
 
-      - name: Convert Latex to HTML
-        uses: docker://pandoc/core:latest
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
         with:
-          args: >-
-            --from=latex
-            --to=pdf
-            --standalone
-            --output=resume.pdf
-            main.tex
+          root_file: main.tex
+
+      - name: Rename file
+        id: rename
+        run: mv main.pdf resume.pdf
 
       - name: Uploading artifact
         uses: actions/upload-artifact@master
