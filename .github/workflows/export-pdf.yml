@@ -13,9 +13,11 @@ jobs:
         with:
           root_file: main.tex
 
-      - name: Rename file
-        id: rename
-        run: mv main.pdf resume.pdf
+      - name: Install ghostscript
+        run: sudo apt install ghostscript
+
+      - name: Enhance PDF file & rename
+        run: gs -sDEVICE=pdfwrite -sOutputFile='resume.pdf' -dNOPAUSE -dBATCH main.pdf
 
       - name: Uploading artifact
         uses: actions/upload-artifact@master

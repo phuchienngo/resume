@@ -10,18 +10,6 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@master
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@master
-        with:
-          root_file: main.tex
-
-      - name: Rename file
-        id: rename
-        run: mv main.pdf resume.pdf
-
-      - name: Convert PDF to HTML
-        run: docker run --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-alpine-3.12.0-x86_64 --zoom 1.3 resume.pdf
-
       - name: Install ghostscript
         run: sudo apt install ghostscript
 
@@ -48,6 +36,17 @@ jobs:
           sudo sed -i "s/$WDT/$WDTR/" /etc/ImageMagick-6/policy.xml
           sudo sed -i "s/$MAP/$MAPR/" /etc/ImageMagick-6/policy.xml
           sudo sed -i "s/$MEM/$MEMR/" /etc/ImageMagick-6/policy.xml
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: main.tex
+
+      - name: Enhance PDF file & rename
+        run: gs -sDEVICE=pdfwrite -sOutputFile='resume.pdf' -dNOPAUSE -dBATCH main.pdf
+
+      - name: Convert PDF to HTML
+        run: docker run --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-alpine-3.12.0-x86_64 --zoom 1.3 resume.pdf
 
       - name: Convert PDF to PNG
         run: convert -density 900 -background white -alpha off resume.pdf -resize 25% -quality 90 -colorspace RGB resume.png
