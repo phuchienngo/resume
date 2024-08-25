@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Convert Latex to HTML
-        uses: docker://pandoc/core:latest
+        uses: docker://pandoc/latex:latest
         with:
           args: >-
             --from=latex
@@ -21,7 +21,7 @@ jobs:
             main.tex
 
       - name: Build README
-        uses: docker://pandoc/core:latest
+        uses: docker://pandoc/latex:latest
         with:
           args: >-
             --from=latex
