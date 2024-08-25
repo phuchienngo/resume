@@ -60,12 +60,7 @@ jobs:
             git add resume.png
             git add resume.html
             git commit -m "[ci] compile resume"
+            git push -u origin main
           else
             echo "No changes to commit."
           fi
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.CUSTOM_TOKEN }}
-
