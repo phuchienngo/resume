@@ -1,0 +1,46 @@
+name: Latex to HTML
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@master
+
+      - name: Convert Latex to HTML
+        uses: docker://pandoc/core:latest
+        with:
+          args: >-
+            --from=latex
+            --to=html5
+            --standalone
+            --output=resume.html
+            main.tex
+
+      - name: Build README
+        uses: docker://pandoc/core:latest
+        with:
+          args: >-
+            --from=latex
+            --to=gfm
+            --standalone
+            --output=README.md
+            main.tex
+
+      - name: Commit generated PDF file
+        id: commit
+        run: |
+          git config --local user.email "action[bot]@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          git add resume.html
+          git commit -m "[ci] compile resume"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.CUSTOM_TOKEN }}
+
