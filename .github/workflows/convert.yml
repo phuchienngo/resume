@@ -54,11 +54,12 @@ jobs:
       - name: Commit generated PDF file
         id: commit
         run: |
-          if [ -n "$(git status --porcelain resume.html resume.png)" ]; then
+          if [ -n "$(git status --porcelain resume.html resume.png resume.pdf)" ]; then
             git config --local user.email "action[bot]@github.com"
             git config --local user.name "github-actions[bot]"
             git add resume.png
             git add resume.html
+            git add resume.pdf
             git commit -m "[ci] compile resume"
             git push -u origin main
           else
