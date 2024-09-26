@@ -1,10 +1,3 @@
-%-------------------------
-% Resume in Latex
-% Author : Sourabh Bajaj
-% Website: https://github.com/sb2nov/resume
-% License : MIT
-%------------------------
-
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
@@ -16,6 +9,7 @@
 \usepackage{enumitem}
 \usepackage[pdftex]{hyperref}
 \usepackage{fancyhdr}
+\usepackage{csquotes}
 
 
 \pagestyle{fancy}
@@ -86,9 +80,6 @@
     \resumeSubheading
     {University of Science - VNUHCM}{Ho Chi Minh City, Vietnam}
     {Bachelor of Science in Software Engineering;  GPA: 3.43 (8.59/10)}{Aug. 2019 -- Sep. 2023}
-%    \resumeSubheading
-%    {Birla Institute of Technology and Science}{Pilani, India}
-%    {Bachelor of Engineering in Electrical and Electronics;  GPA: 3.66 (9.15/10.0)}{Aug. 2008 -- July. 2012}
     \resumeSubHeadingListEnd
 
 
@@ -100,44 +91,36 @@
     {MoMo}{Ho Chi Minh City, Vietnam}
     {Software Engineer}{Sep 2023 - Present}
     \resumeItemListStart
-    \resumeItem{Tensorflow}
-    {TensorFlow is an open source software library for numerical computation using data flow graphs; primarily used for training deep learning models.}
-    \resumeItem{Apache Beam}
-    {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines, as well as a set of language-specific SDKs for constructing pipelines and runners.}
+    \resumeItem{Lac Xi 2024}
+    {Optimized MoMo's critical gift verification system to handle peak loads during a high-traffic campaign, ensuring a seamless user experience by implementing caching strategies and streamlining workflows.}
+    \resumeItem{Authentication Gateway}
+    {Built a secure gateway system with Keycloak authentication and a custom rule-based authorization engine to control access to sensitive production configurations. A reverse proxy streamlines request routing, ensuring efficient and secure access management.}
     \resumeItemListEnd
 
     \resumeSubheading
     {MoMo}{Ho Chi Minh City, Vietnam}
     {Junior Software Engineer}{Jun 2022 - Sep 2023}
     \resumeItemListStart
-    \resumeItem{Notifications}
-    {Service for sending email, push and in-app notifications. Involved in features such as delivery time optimization, tracking, queuing and A/B testing. Built an internal app to run batch campaigns for marketing etc.}
-    \resumeItem{Nostos}
-    {Bulk data processing and injection service from Hadoop to Cassandra and provides a thin REST layer on top for serving offline computed data online.}
-    \resumeItem{Workflows}
-    {Dataduct an open source workflow framework to create and manage data pipelines leveraging reusables patterns to expedite developer productivity.}
-    \resumeItem{Data Collection}
-    {Designed the internal survey and crowd sourcing platfowm which allowed for creating various tasks for crowd sourding or embedding surveys across the Coursera platform.}
-    \resumeItem{Dev Environment}
-    {Analytics environment based on docker and AWS, standardized the python and R dependencies. Wrote the core libraries that are shared by all data scientists.}
-    \resumeItem{Data Warehousing}
-    {Setup, schema design and management of Amazon Redshift. Built an internal app for access to the data using a web interface. Dataduct integration for daily ETL injection into Redshift.}
-    \resumeItem{Recommendations}
-    {Core service for all recommendation systems at Coursesa, currently used on the homepage and throughout the content discovery process. Worked on both offline training and online serving.}
-    \resumeItem{Content Discovery}
-    {Improved content discovery by building a new onboarding experience on coursera. Using this to personalize the search and browse experience. Also worked on ranking and indexing improvements.}
-    \resumeItem{Course Dashboards}
-    {Instructor dashboards and learner surveying tools, which helped instructors run their class better by providing data on Assignments and Learner Activity.}
+    \resumeItem{Heo Dat MoMo - Donation Platform}
+    {Maintained and enhanced Heo Dat MoMo, a popular charitable giving feature in the MoMo e-wallet, by ensuring service stability and developing a new user engagement feature with a virtual pig \enquote{growth} and rewards system.}
+    \resumeItem{Promotion Platform}
+    {Significantly improved the performance of MoMo's promotion platform by overcoming Firestore index limitations. Developed a streaming mechanism that reduced loading times from 10 seconds to under 200ms, greatly enhancing the user experience.}
+    \resumeItem{Lac Xi 2023}
+    {Developed a high-performance inventory system using Google Cloud Bigtable for MoMo's Lac Xi 2023 campaign, ensuring accurate reward distribution to millions of users under peak load.}
+    \resumeItem{Mission Platform}
+    {Took ownership of and re-architected MoMo's mission platform, a legacy system, resulting in a more performant and scalable solution while preserving all existing features.}
+    \resumeItem{Idempotency Library}
+    {Improved the reliability and performance of MoMo's reward distribution system by refactoring a core idempotency library, eliminating erroneous duplicate rewards and creating a more robust promotion/gamification experience for users.}
     \resumeItemListEnd
 
     \resumeSubheading
     {MoMo}{Ho Chi Minh City, Vietnam}
     {ITC Trainee (Software Engineering Intern)}{Nov 2021 - Jun 2022}
     \resumeItemListStart
-    \resumeItem{Portfolio Management}
-    {Created models for portfolio hedging,  portfolio optimization and price forecasting. Also creating a strategy backtesting engine used for simulating and backtesting strategies.}
-    \resumeItem{QuantDesk}
-    {Python backend for a web application used by hedge fund managers for portfolio management.}
+    \resumeItem{Lac Xi 2022}
+    {Built high-availability microservices from scratch under instruction. Designed a generic history format for seamless integration with other services, using REST APIs for mobile integration. Leveraged GCP's infrastructures (BigTable, BigQuery, Cloud Firestore, and Cloud Pubsub) to ensure reliable communication and system stability.}
+    \resumeItem{Quiz Game (PigSchool)}
+    {Developed the back-end and optimized the database for a user-friendly quiz game administration tool. This reduced storage costs and improved efficiency while providing a safe and intuitive content management interface.    }
     \resumeItemListEnd
 
     \resumeSubHeadingListEnd
@@ -146,14 +129,12 @@
 %-----------PROJECTS-----------------
     \section{Projects}
     \resumeSubHeadingListStart
-    \resumeSubItem{QuantSoftware Toolkit}
-    {Open source python library for financial data analysis and machine learning for finance.}
-    \resumeSubItem{Github Visualization}
-    {Data Visualization of Git Log data using D3 to analyze project trends over time.}
-    \resumeSubItem{Recommendation System}
-    {Music and Movie recommender systems using collaborative filtering on public datasets.}
-%     \resumeSubItem{Mac Setup}
-%       {Book that gives step by step instructions on setting up developer environment on Mac OS.}
+    \resumeSubItem{DNS over HTTPS Resolver}
+    {Built a Go-based DNS over HTTPS (DoH) resolver deployed on Vercel. This serverless function intercepts DoH requests, distributes them to multiple upstream DNS servers, and returns the fastest response to the client, minimizing latency and improving performance.}
+    \resumeSubItem{Vert.x Spring-like Routing}
+    {Developed a Vert.x framework for building HTTP servers with annotation-based routing and Dagger 2 dependency injection, simplifying development and improving code organization.}
+    \resumeSubItem{AI Chat App}
+    {Created a Flutter-based chat assistant application powered by the ChatGPT API, featuring speech-to-text functionality for intuitive voice interaction. The application leverages GetIt and RxDart for efficient state management and dependency injection.}
     \resumeSubHeadingListEnd
 
 %
@@ -161,9 +142,9 @@
     \section{Programming Skills}
     \resumeSubHeadingListStart
     \resumeSubItem{Languages}
-    {Java, Kotlin, Python, JavaScript, SQL}
+    {Java, Kotlin, Go, Python, JavaScript, SQL}
     \resumeSubItem{Technologies}
-    {Vert.x, gRPC, Bigtable, HBase, BigQuery, Firestore, MongoDB, Cloud Pubsub, Kafka, Redis, DragonflyDB, PostgreSQL}
+    {Vert.x, gRPC, Bigtable, HBase, BigQuery, Firestore, MongoDB, Cloud Pubsub, Kafka, Redis, DragonflyDB, Starrocks}
     \resumeSubHeadingListEnd
 
 
