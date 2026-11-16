@@ -9,9 +9,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compile LaTeX to PDF
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main.tex
+        run: |
+          docker run --rm -v "$PWD:/pdf" -w /pdf \
+            docker.io/texlive/texlive@sha256:45cdde7e87aff38479fae2ed740f1a5959d850f1ecc3fea29d4e934a44489a10 \
+            latexmk -pdf \
+              -shell-escape \
+              -interaction=nonstopmode \
+              -file-line-error \
+              -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode -file-line-error" \
+              main.tex
 
       - name: Rename PDF
         run: mv main.pdf resume.pdf
