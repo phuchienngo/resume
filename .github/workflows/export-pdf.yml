@@ -6,59 +6,26 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
-      - name: Pull containers in parallel
-        run: |
-          podman pull docker.io/texlive/texlive@sha256:45cdde7e87aff38479fae2ed740f1a5959d850f1ecc3fea29d4e934a44489a10 &
-          podman pull docker.io/minidocks/ghostscript@sha256:ff0742e03ab544c8a2c8ab3e3ce72d4039463a47076ae4845955de8044b26576 &
-          wait
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
 
-      - name: Convert LaTeX to PDF
-        run: |
-          podman run --rm -v "`pwd`:/pdf:Z" -w /pdf \
-            docker.io/texlive/texlive@sha256:45cdde7e87aff38479fae2ed740f1a5959d850f1ecc3fea29d4e934a44489a10 \
-            latexmk -pdf \
-              -shell-escape \
-              -interaction=nonstopmode \
-              -file-line-error \
-              -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode -file-line-error" \
-              main.tex
-
-      - name: Optimize PDF output
-        run: |
-          podman run --rm -v "`pwd`:/pdf:Z" -w /pdf \
-            docker.io/minidocks/ghostscript@sha256:ff0742e03ab544c8a2c8ab3e3ce72d4039463a47076ae4845955de8044b26576 \
-            gs -sDEVICE=pdfwrite \
-              -dCompatibilityLevel=1.7 \
-              -dPDFSETTINGS=/prepress \
-              -dNOPAUSE \
-              -dQUIET \
-              -dBATCH \
-              -sOutputFile=resume.pdf \
-              main.pdf
+      - name: Rename PDF
+        run: mv main.pdf resume.pdf
 
       - name: Uploading artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
           name: PDF
           path: resume.pdf
 
       - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@master
+        uses: softprops/action-gh-release@v2
         with:
           name: Resume
           tag_name: v0.0.1
+          files: resume.pdf
           token: ${{ secrets.CUSTOM_TOKEN }}
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume.pdf
-          asset_name: resume.pdf
-          asset_content_type: application/pdf

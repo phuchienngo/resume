@@ -1,30 +1,17 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper,11pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[margin=0.6in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{xcolor}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
-\usepackage{fancyhdr}
-\usepackage{csquotes}
-\usepackage{fontawesome}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
 
+% Make text copyable / parseable (ATS)
+\input{glyphtounicode}
+\pdfgentounicode=1
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.375in}
-\addtolength{\evensidemargin}{-0.375in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\pagestyle{empty}
 
 \urlstyle{same}
 
@@ -40,8 +27,8 @@
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[2]{
-    \item\small{
-        \textbf{#1}{: #2 \vspace{-2pt}}
+    \item{\small
+        \textbf{#1}: #2 \vspace{-2pt}
     }
 }
 
@@ -70,8 +57,8 @@
 
 %----------HEADING-----------------
     \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-        \textbf{\href{https://www.linkedin.com/in/npchien/}{\Large Ngo Phu Chien}} & Email : \href{mailto:ngophuchien@outlook.com}{ngophuchien@outlook.com}\\
-        \href{https://www.linkedin.com/in/npchien}{\faLinkedin\ npchien} \,|\, \href{https://github.com/phuchienngo}{\faGithub\ phuchienngo} & Mobile : 0973668150 \\
+        \textbf{\href{https://www.linkedin.com/in/npchien/}{\Large Ngo Phu Chien}} & Email: \href{mailto:ngophuchien@outlook.com}{ngophuchien@outlook.com}\\
+        \href{https://www.linkedin.com/in/npchien}{\faLinkedin\ npchien} \,|\, \href{https://github.com/phuchienngo}{\faGithub\ phuchienngo} & Mobile: 0973668150 \\
     \end{tabular*}
 
 
@@ -80,7 +67,7 @@
     \resumeSubHeadingListStart
     \resumeSubheading
     {University of Science - VNUHCM}{Ho Chi Minh City, Vietnam}
-    {Bachelor of Science in Software Engineering;  GPA: 3.43 (8.54/10)}{Aug. 2019 -- Sep. 2023}
+    {Bachelor of Science in Software Engineering; GPA: 3.43 (8.54/10)}{Aug 2019 -- Sep 2023}
     \resumeSubHeadingListEnd
 
 
@@ -90,22 +77,22 @@
 
     \resumeSubheading
     {VNG Corporation - Zalo}{Ho Chi Minh City, Vietnam}
-    {Senior Software Engineer}{Mar 2025 - Present}
+    {Senior Software Engineer}{Mar 2025 -- Present}
     \resumeItemListStart
     \resumeItem{System Monitoring \& Observability}
     {Led implementation of service monitoring framework to measure and report system SLA, SLI, and SLO for backend storage services.}
     \resumeItem{Infrastructure Migration}
-    {Owned migration from in-house queue to Kafka, eliminating overflow issues and improving scalability. Architected distributed event delayed service using Apache Ignite to address Kafka's scheduling limitations.}
+    {Owned migration from in-house queue to Kafka, eliminating overflow issues and improving scalability. Architected distributed delayed-event service using Apache Ignite to address Kafka's scheduling limitations.}
     \resumeItem{Code Quality \& Architecture}
     {Drove codebase refactoring initiative to improve testability and maintainability, enhancing system modularity and development efficiency.}
     \resumeItemListEnd
 
     \resumeSubheading
     {MoMo}{Ho Chi Minh City, Vietnam}
-    {Software Engineer}{Nov 2021 - Mar 2025}
+    {Software Engineer}{Nov 2021 -- Mar 2025}
     \resumeItemListStart
     \resumeItem{Performance Optimization}
-    {Architected streaming mechanism to overcome Firestore index limitations, achieving \textbf{95\%} performance improvement \textbf{(4s → 200ms)} on promotion platform and reducing Firestore cost by \textbf{80\%}.}
+    {Architected streaming mechanism to overcome Firestore index limitations, achieving \textbf{95\%} performance improvement \textbf{(4s $\rightarrow$ 200ms)} on promotion platform and reducing Firestore cost by \textbf{80\%}.}
     \resumeItem{System Scalability}
     {Led complete re-architecture of mission platform to handle \textbf{20k} RPS for status API and process \textbf{6k+} user events/second with \textbf{sub-200ms} latency, reducing user complaints by \textbf{50\%}. Optimized Redis caching by rewriting Lua scripts to reduce network overhead.}
     \resumeItem{Technology Migration \& Load Handling}
@@ -128,9 +115,9 @@
 %-----------PROJECTS-----------------
     \section{Projects}\label{sec:projects}
     \resumeSubHeadingListStart
-    \resumeSubItem{Drive Reader}{C\#/.NET. Reads FAT32/NTFS file systems using Windows low-level APIs, reconstructs the full directory tree of a given disk. \href{https://github.com/phuchienngo/DriveReader}{\faGithub\ }}
-    \resumeSubItem{SimpleKV}{Java/Kotlin. High-throughput in-memory key-value database achieving \textbf{1M GET ops/s} and \textbf{807k SET ops/s} with \textbf{sub-millisecond P99 latency}. Built with LMAX Disruptor for lock-free operations and thread communication, buddy allocator for zero-GC performance, DashTable for rehashing elimination, SIMD operation for key lookup and comparision, and I/O multiplexing optimization. \href{https://github.com/phuchienngo/simplekv}{\faGithub\ }}
-    \resumeSubItem{TinyDB}{Java/Kotlin. Lightweight LSM-tree key-value embedded database with WAL, SSTables, MemTable, compaction, and bloom filters. Thread-safe and optimized for data integrity. \href{https://github.com/phuchienngo/tinydb}{\faGithub\ }}
+    \resumeSubItem{Drive Reader}{C\#/.NET. Reads FAT32/NTFS file systems using Windows low-level APIs, reconstructs the full directory tree of a given disk. \href{https://github.com/phuchienngo/DriveReader}{\faGithub}}
+    \resumeSubItem{SimpleKV}{Java/Kotlin. High-throughput in-memory key-value database achieving \textbf{1M GET ops/s} and \textbf{807k SET ops/s} with \textbf{sub-millisecond P99 latency}. Built with LMAX Disruptor for lock-free operations and thread communication, buddy allocator for zero-GC performance, DashTable for rehashing elimination, SIMD operation for key lookup and comparison, and I/O multiplexing optimization. \href{https://github.com/phuchienngo/simplekv}{\faGithub}}
+    \resumeSubItem{TinyDB}{Java/Kotlin. Lightweight LSM-tree key-value embedded database with WAL, SSTables, MemTable, compaction, and bloom filters. Thread-safe and optimized for data integrity. \href{https://github.com/phuchienngo/tinydb}{\faGithub}}
     \resumeSubHeadingListEnd
 
 %

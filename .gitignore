@@ -106,3 +106,14 @@ src/main/resources/dist/*
 # VSCode langserver artifacts
 /bin/
 /src/main/kotlin/com/sourcegraph/cody/agent/protocol_generated/*
+# LaTeX build output
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+main.pdf
+resume.pdf
+resume.html
+resume.png
+_site/
