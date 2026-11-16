@@ -38,7 +38,7 @@ jobs:
           cp index.html _site/index.html
           docker run --rm -v "$PWD/_site:/pdf" -w /pdf \
             docker.io/pdf2htmlex/pdf2htmlex@sha256:83899e54f842fda9ca531aea6f30342b0cab4933a246dfc336d63b3e696c9990 \
-            --zoom 1.3 resume.pdf
+            --zoom 1.3 --process-outline 0 resume.pdf
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
